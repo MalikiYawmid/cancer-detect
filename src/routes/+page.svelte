@@ -153,6 +153,12 @@
 		<p class="subtext">Klasifikasi kanker pada paru-paru berbasis Deep Learning.</p>
 	</header>
 
+	{#if loadingModel}
+		<div class="loading" in:fade={{ duration: 600 }}>
+			<h2>Loading model.. Mohon tunggu sebentar..</h2>
+		</div>
+	{/if}
+
 	<div class="content">
 		{#each imgDisplays as url, i}
 			<div class="card" in:fade={{ duration: 600 }} out:fade={{ duration: 200 }}>
@@ -199,7 +205,7 @@
 		{/each}
 	</div>
 
-	{#if loadingModel == false}
+	{#if !loadingModel}
 		<div class="navbar" in:fade={{ duration: 600 }}>
 			<div class="file-select">
 				<p class="file-label">CT Scan Paru-Paru</p>
@@ -275,6 +281,16 @@
 			font-size: 2rem;
 			color: rgba($secondary-color, 0.7);
 		}
+	}
+
+	.loading {
+		flex: 1 0 auto;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-size: 2.4rem;
+		text-align: center;
+		padding: 0rem 1rem;
 	}
 
 	.content {
