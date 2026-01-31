@@ -13,6 +13,7 @@
 	let model: tf.LayersModel;
 	let highests: number[] = [];
 	let imageElements: HTMLImageElement[] = [];
+	let loadingModel = true;
 
 	const isHighest = (i: number, j: number, a: number, b: number) => {
 		return (
@@ -43,6 +44,7 @@
 
 	onMount(async () => {
 		model = await loadModel();
+		loadingModel = false;
 	});
 
 	const generateGradCAM = async (
@@ -197,43 +199,45 @@
 		{/each}
 	</div>
 
-	<div class="navbar">
-		<div class="file-select">
-			<p class="file-label">CT Scan Paru-Paru</p>
-			<input id="input" type="file" accept="image/*" multiple bind:files={uploadedFiles} />
-			<label class="file-box" for="input">
-				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-					<path
-						fill="currentColor"
-						d="M11 16V7.85l-2.6 2.6L7 9l5-5l5 5l-1.4 1.45l-2.6-2.6V16zm-5 4q-.825 0-1.412-.587T4 18v-3h2v3h12v-3h2v3q0 .825-.587 1.413T18 20z"
-					/>
-				</svg>
-				<div bind:this={inputText}>Pilih..</div>
-			</label>
+	{#if loadingModel == false}
+		<div class="navbar" in:fade={{ duration: 600 }}>
+			<div class="file-select">
+				<p class="file-label">CT Scan Paru-Paru</p>
+				<input id="input" type="file" accept="image/*" multiple bind:files={uploadedFiles} />
+				<label class="file-box" for="input">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+						<path
+							fill="currentColor"
+							d="M11 16V7.85l-2.6 2.6L7 9l5-5l5 5l-1.4 1.45l-2.6-2.6V16zm-5 4q-.825 0-1.412-.587T4 18v-3h2v3h12v-3h2v3q0 .825-.587 1.413T18 20z"
+						/>
+					</svg>
+					<div bind:this={inputText}>Pilih..</div>
+				</label>
+			</div>
+			<div class="classify">
+				<button on:click={classifyClicked}>
+					<svg
+						class="left-icon"
+						xmlns="http://www.w3.org/2000/svg"
+						width="24"
+						height="24"
+						viewBox="0 0 24 24"
+						><path
+							fill="currentColor"
+							d="m19 1l-1.26 2.75L15 5l2.74 1.26L19 9l1.25-2.74L23 5l-2.75-1.25M9 4L6.5 9.5L1 12l5.5 2.5L9 20l2.5-5.5L17 12l-5.5-2.5M19 15l-1.26 2.74L15 19l2.74 1.25L19 23l1.25-2.75L23 19l-2.75-1.26"
+						/>
+					</svg>
+					<div>&nbsp;Klasifikasi&nbsp;</div>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+						><path
+							fill="currentColor"
+							d="m19 1l-1.26 2.75L15 5l2.74 1.26L19 9l1.25-2.74L23 5l-2.75-1.25M9 4L6.5 9.5L1 12l5.5 2.5L9 20l2.5-5.5L17 12l-5.5-2.5M19 15l-1.26 2.74L15 19l2.74 1.25L19 23l1.25-2.75L23 19l-2.75-1.26"
+						/>
+					</svg>
+				</button>
+			</div>
 		</div>
-		<div class="classify">
-			<button on:click={classifyClicked}>
-				<svg
-					class="left-icon"
-					xmlns="http://www.w3.org/2000/svg"
-					width="24"
-					height="24"
-					viewBox="0 0 24 24"
-					><path
-						fill="currentColor"
-						d="m19 1l-1.26 2.75L15 5l2.74 1.26L19 9l1.25-2.74L23 5l-2.75-1.25M9 4L6.5 9.5L1 12l5.5 2.5L9 20l2.5-5.5L17 12l-5.5-2.5M19 15l-1.26 2.74L15 19l2.74 1.25L19 23l1.25-2.75L23 19l-2.75-1.26"
-					/>
-				</svg>
-				<div>&nbsp;Klasifikasi&nbsp;</div>
-				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-					><path
-						fill="currentColor"
-						d="m19 1l-1.26 2.75L15 5l2.74 1.26L19 9l1.25-2.74L23 5l-2.75-1.25M9 4L6.5 9.5L1 12l5.5 2.5L9 20l2.5-5.5L17 12l-5.5-2.5M19 15l-1.26 2.74L15 19l2.74 1.25L19 23l1.25-2.75L23 19l-2.75-1.26"
-					/>
-				</svg>
-			</button>
-		</div>
-	</div>
+	{/if}
 </main>
 
 <svelte:head>
