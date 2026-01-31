@@ -1,0 +1,15 @@
+html {
+	font-size: 10px;
+}
+
+body {
+  font-family: 'Funnel Sans Variable', sans-serif;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0rem;
+}
+
