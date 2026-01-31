@@ -59,8 +59,8 @@
 
 		await tf.browser.toPixels(
 			tf.image.resizeBilinear((colored as any).squeeze().toFloat().div(tf.scalar(255)), [
-				imageElement.width,
-				imageElement.height
+				imageElement.height,
+				imageElement.width
 			]),
 			canvas
 		);
