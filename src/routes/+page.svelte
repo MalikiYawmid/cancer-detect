@@ -147,6 +147,17 @@
 	};
 </script>
 
+<svelte:head>
+	<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+	<link rel="shortcut icon" href="/favicon.ico" />
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+	<meta name="apple-mobile-web-app-title" content="CancerDetect" />
+	<link rel="manifest" href="/site.webmanifest" />
+	<title>CancerDetect</title>
+	<meta name="description" content="Klasifikasi kanker pada paru-paru berbasis Deep Learning." />
+</svelte:head>
+
 <main>
 	<header>
 		<h1 class="title">CancerDetect</h1>
@@ -245,12 +256,6 @@
 		</div>
 	{/if}
 </main>
-
-<svelte:head>
-	<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-	<title>CancerDetect</title>
-	<meta name="description" content="Klasifikasi kanker pada paru-paru berbasis Deep Learning." />
-</svelte:head>
 
 <style lang="scss">
 	$primary-color: #73d800;
