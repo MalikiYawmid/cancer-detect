@@ -247,8 +247,9 @@
 </main>
 
 <svelte:head>
+	<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 	<title>CancerDetect</title>
-	<meta name="description" content="Klasifikasi Kanker pada Paru-Paru berbasis AI" />
+	<meta name="description" content="Klasifikasi kanker pada paru-paru berbasis Deep Learning." />
 </svelte:head>
 
 <style lang="scss">
