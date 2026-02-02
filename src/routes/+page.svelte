@@ -333,6 +333,7 @@
 				.ct-scan {
 					width: 45%;
 					height: 100%;
+					aspect-ratio: 4 / 3;
 					object-fit: cover;
 					border-radius: 0.5rem 0rem 0rem 0.5rem;
 				}
