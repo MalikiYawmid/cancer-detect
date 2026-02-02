@@ -160,8 +160,12 @@
 
 <main>
 	<header>
-		<h1 class="title">CancerDetect</h1>
+		<div class="title">
+			<h1 class="">Cancer</h1>
+			<h1 class="green">Detect</h1>
+		</div>
 		<p class="subtext">Klasifikasi kanker pada paru-paru berbasis Deep Learning.</p>
+		<p class="author">Dibuat oleh: Andrea Hendrian Saleh & Imam Sibaweih Khoiri</p>
 	</header>
 
 	{#if loadingModel}
@@ -277,15 +281,28 @@
 		padding-top: 4.8rem;
 
 		.title {
+			display: flex;
+			justify-content: center;
 			text-align: center;
 			font-size: 4.8rem;
 			color: $secondary-color;
+			margin-bottom: -1.4rem;
+
+			.green {
+				color: $primary-color;
+			}
 		}
 
 		.subtext {
 			text-align: center;
 			font-size: 2rem;
 			color: rgba($secondary-color, 0.7);
+		}
+
+		.author {
+			text-align: center;
+			font-size: 1.6rem;
+			color: rgba($secondary-color, 0.4);
 		}
 	}
 
@@ -645,6 +662,14 @@
 				.left-icon {
 					display: inherit;
 				}
+			}
+		}
+	}
+
+	@media (max-width: 420px) {
+		header {
+			.title {
+				font-size: 2.6rem;
 			}
 		}
 	}
