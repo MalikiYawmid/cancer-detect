@@ -175,6 +175,11 @@
 	{/if}
 
 	<div class="content">
+		{#if !imgDisplays || imgDisplays.length == 0}
+			<div class="starting-card" in:fade={{ duration: 600 }} out:fade={{ duration: 200 }}>
+				<h2>Mohon upload CT Scan dibawah untuk memulai klasifikasi..</h2>
+			</div>
+		{/if}
 		{#each imgDisplays as url, i}
 			<div class="card" in:fade={{ duration: 600 }} out:fade={{ duration: 200 }}>
 				<p>{files[i].name}</p>
@@ -326,6 +331,29 @@
 		padding-bottom: 8.5rem;
 		gap: 3rem;
 
+		.starting-card {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			width: 70%;
+			height: 45vh;
+			max-width: 70rem;
+			background-color: $tertiary-color;
+			border: 0.3rem solid $quaternary-color;
+			border-radius: 0.8rem;
+			box-shadow:
+				0rem 0.4rem 0.8rem 0.3rem rgba(#000, 0.075),
+				0rem 0.1rem 0.3rem 0rem rgba(#000, 0.15);
+			padding: 3rem;
+
+			h2 {
+				font-size: 4rem;
+				text-align: center;
+				color: rgba($secondary-color, 0.8);
+			}
+		}
+
 		.card {
 			width: 90%;
 			max-width: 90rem;
@@ -409,10 +437,6 @@
 						color: $secondary-color;
 						letter-spacing: 0.12rem;
 						cursor: pointer;
-					}
-
-					.centered {
-						text-align: center;
 					}
 				}
 			}
@@ -540,6 +564,7 @@
 			padding-top: 3.6rem;
 
 			.title {
+				margin-bottom: -1.1rem;
 				font-size: 3.6rem;
 			}
 
@@ -549,6 +574,12 @@
 		}
 
 		.content {
+			.starting-card {
+				h2 {
+					font-size: 3.5rem;
+				}
+			}
+
 			.card {
 				.classification {
 					h2 {
@@ -589,6 +620,7 @@
 			padding: 3rem 1rem 0rem;
 
 			.title {
+				margin-bottom: -0.8rem;
 				font-size: 3.2rem;
 			}
 
@@ -598,6 +630,12 @@
 		}
 
 		.content {
+			.starting-card {
+				h2 {
+					font-size: 3rem;
+				}
+			}
+
 			.card {
 				p {
 					text-align: center;
@@ -669,6 +707,7 @@
 	@media (max-width: 420px) {
 		header {
 			.title {
+				margin-bottom: -0.4rem;
 				font-size: 2.6rem;
 			}
 		}
