@@ -175,7 +175,7 @@
 	{/if}
 
 	<div class="content">
-		{#if !imgDisplays || imgDisplays.length == 0}
+		{#if !loadingModel && (!imgDisplays || imgDisplays.length == 0)}
 			<div class="starting-card" in:fade={{ duration: 600 }} out:fade={{ duration: 200 }}>
 				<h2>Mohon upload CT Scan dibawah untuk memulai klasifikasi..</h2>
 			</div>
